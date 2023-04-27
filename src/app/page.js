@@ -1,95 +1,86 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import style from "../styles/Home.module.css";
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className={style.home_page}>
+        <div className={style.container}>
+          {/* Home page Header Part Starts */}
+          <section className={style.header}>
+            <div className={style.logo_cover}>
+              <span className={style.app_logo}>
+                <i className="fa fa-comments-o" aria-hidden="true"></i>
+              </span>
+              <span className={style.app_name}>
+                <a>Savi-Chats</a>
+              </span>
+            </div>
+            <div className={style.userProfile_cover}>
+              <span className={style.user_profile}>
+                <i className="fa fa-user-o" aria-hidden="true"></i>
+              </span>
+            </div>
+          </section>
+          {/* Home page Header Part Ends */}
+
+          {/* Home page Body Part Starts */}
+          <section className={style.body}>
+            <div className={style.chatList_cover}>
+              <div className={style.chat_list_items}>
+                <span className={style.chatPic_cover}>
+                  <span className={style.chat_pic}>
+                    <i className="fa fa-user" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span className={style.chatInfo_cover}>
+                  <span className={style.chat_name}>
+                    <p>Savita Didi</p>
+                  </span>
+                  <span className={style.chat_msg_highlight}>
+                    <p>
+                      <i className="fa fa-check" aria-hidden="true"></i>
+                      where are you Didi ? dfjkdjfklsdjfkdjf jkfdkfjds
+                      fkjsdkfjkj
+                    </p>
+                  </span>
+                </span>
+                <span className={style.chatBadge_cover}>
+                  <span className={style.chat_badge}>
+                    <p>2</p>
+                  </span>
+                </span>
+              </div>
+              {/* demo */}
+
+              {/* demo */}
+            </div>
+          </section>
+          {/* Home page Body Part Ends */}
+
+          {/* Home page Footer Part Starts */}
+          <section className={style.footer}>
+            <nav className={style.menu_bar}>
+              <ul>
+                <li>
+                  <i className="fa fa-home" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i className="fa fa-search" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i className="fa fa-bell-o" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i className="fa fa-sliders" aria-hidden="true"></i>
+                </li>
+              </ul>
+            </nav>
+          </section>
+          {/* Home page Footer Part Ends*/}
         </div>
       </div>
+    </>
+  );
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;
