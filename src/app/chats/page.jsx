@@ -1,6 +1,6 @@
-import style from "../styles/Home.module.css";
+import style from "../../styles/Home.module.css";
 
-const Home = () => {
+const Chats = () => {
   return (
     <>
       <div className={style.home_page}>
@@ -83,4 +83,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Chats;

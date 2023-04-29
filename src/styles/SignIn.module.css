@@ -1,0 +1,43 @@
+/* ------------------------------------ */
+/* Home Page Header Content : Starts here */
+/* ------------------------------------ */
+
+.signIn_page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  border: 0.1rem solid red;
+}
+
+.signIn_page .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 0.1rem solid white;
+}
+
+.signIn_page .container .logo_cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 5rem;
+  height: 5rem;
+  border: 0.1rem solid white;
+  border-radius: 50%;
+}
+
+.signIn_page .container .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 80%;
+  border: 0.1rem solid white;
+  border-radius: 2rem;
+}
