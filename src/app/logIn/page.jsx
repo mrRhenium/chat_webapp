@@ -1,48 +1,40 @@
 "use client";
 
-import Link from "next/link";
-import style from "../../styles/SignIn.module.css";
+import style from "../../styles/LogIn.module.css";
 import {
   AiOutlineUser,
-  AiOutlineMail,
   FaRegEye,
   FcGoogle,
   FaRegEyeSlash,
 } from "react-icons/all";
 import { useState } from "react";
+import Link from "next/link";
 
-const SignIn = () => {
+const LogIn = () => {
   const [passwordIcon, set_passwordIcon] = useState(1);
-
   return (
     <>
-      <div className={style.signIn_page}>
+      <div className={style.logIn_page}>
         <div className={style.container}>
           {/*  */}
 
-          {/* Sign In page Header Part Starts */}
+          {/* LogIn page Header Part Start */}
           <section className={style.header}>
             <span className={style.logo_cover}></span>
+            <main>
+              <p>
+                {`Welcome Back !! \n to \n World Fastest & Secure \n Messaging Platform`}
+              </p>
+            </main>
             <h1 className={style.heading}>Sign In</h1>
           </section>
-          {/* Sign In page Header Part Starts */}
+          {/* LogIn page Header Part End */}
 
-          {/* Sign In page Body Part Starts */}
+          {/* LogIn page Body Part Start */}
           <section className={style.body}>
             <div className={style.form}>
               {/* Sign In page Form Part Start */}
               <form action="">
-                <label className={style.input_cover}>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    autoComplete="off"
-                    placeholder="Name"
-                    required
-                  />
-                  <AiOutlineUser className={style.input_icons} />
-                </label>
                 <label className={style.input_cover}>
                   <input
                     type="text"
@@ -53,17 +45,6 @@ const SignIn = () => {
                     required
                   />
                   <AiOutlineUser className={style.input_icons} />
-                </label>
-                <label className={style.input_cover}>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    autoComplete="off"
-                    placeholder="Email address"
-                    required
-                  />
-                  <AiOutlineMail className={style.input_icons} />
                 </label>
                 <label className={style.input_cover}>
                   <input
@@ -91,34 +72,8 @@ const SignIn = () => {
                   )}
                 </label>
                 <label className={style.input_cover}>
-                  <input
-                    type={passwordIcon ? "password" : "text"}
-                    name="confirm_password"
-                    id="confirm_password"
-                    autoComplete="off"
-                    placeholder="Confirm password"
-                    required
-                  />
-
-                  {passwordIcon ? (
-                    <FaRegEye
-                      className={style.input_icons}
-                      onClick={() => {
-                        set_passwordIcon(!passwordIcon);
-                      }}
-                    />
-                  ) : (
-                    <FaRegEyeSlash
-                      className={style.input_icons}
-                      onClick={() => {
-                        set_passwordIcon(!passwordIcon);
-                      }}
-                    />
-                  )}
-                </label>
-                <label className={style.input_cover}>
                   <button type="submit" className={style.signIn_page_btn}>
-                    Sign In
+                    Log In
                   </button>
                 </label>
               </form>
@@ -142,21 +97,18 @@ const SignIn = () => {
               {/* Sign In page Google Sign In Part End */}
             </div>
 
-            {/* Sign In page Footer Part Start */}
+            {/* LogIn page Footer Part Start */}
             <div className={style.footer}>
               <span>
-                Already have an Account? <Link href={`/logIn`}>Log In</Link>
+                Don't have an Account? <Link href={`/signIn`}>sign In</Link>
               </span>
             </div>
-            {/* Sign In page Footer Part Ends */}
           </section>
-          {/* Sign In page Body Part End */}
-
-          {/*  */}
+          {/* LogIn page Body Part End */}
         </div>
       </div>
     </>
   );
 };
 
-export default SignIn;
+export default LogIn;

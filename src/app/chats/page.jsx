@@ -1,9 +1,9 @@
-import style from "../../styles/Home.module.css";
+import style from "../../styles/Chats.module.css";
 
 const Chats = () => {
   return (
     <>
-      <div className={style.home_page}>
+      <div className={style.chats_page}>
         <div className={style.container}>
           {/* Home page Header Part Starts */}
           <section className={style.header}>

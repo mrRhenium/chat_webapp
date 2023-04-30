@@ -1,5 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab&family=Montserrat:wght@700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --primary_bg1: #22afec;
+  --primary_bg2: #eeeeee;
+  --primary_txt1: #ffffff;
+  --primary_txt2: #000000;
+  --btn_font: "Roboto Slab", serif;
+  --header_font: "Montserrat", sans-serif;
 }

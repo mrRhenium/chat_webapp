@@ -8,7 +8,6 @@
   width: 100%;
   height: 100vh;
   /* border: 0.1rem solid red; */
-  background-color: black;
 }
 
 .home_page .container {
@@ -17,264 +16,111 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  background-color: var(--primary_bg2);
+}
+
+.home_page .container .header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40%;
   /* border: 0.1rem solid white; */
 }
-
-.home_page .header {
+.home_page .container .logo_cover {
   position: relative;
   display: flex;
+  flex-direction: column;
+  width: 15rem;
+  height: 5rem;
+  border: 0.1rem solid black;
+}
+
+/* ------------------------------------ */
+/* Home Page Header Content : End here */
+/* ------------------------------------ */
+
+/* ------------------------------------ */
+/* Home Page Body Content : Start here */
+/* ------------------------------------ */
+
+.home_page .container .body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 4rem;
-  border: 0.1rem solid yellowgreen;
+  height: 60%;
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  background-color: var(--primary_bg1);
 }
 
-.home_page .header .logo_cover {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 70%;
-  height: 100%;
-}
-
-.home_page .header .logo_cover .app_logo {
-  color: white;
-  font-size: 2.5rem;
-  margin-left: 0.8rem;
-}
-
-.home_page .header .logo_cover .app_name {
-  color: white;
-  font-size: 1.5rem;
-  margin-left: 0.3rem;
-  text-decoration: aqua;
-}
-.home_page .header .userProfile_cover {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 30%;
-  height: 100%;
-}
-.home_page .header .userProfile_cover .user_profile {
+.home_page .container .body .msg_cover {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.8rem;
-  height: 2.8rem;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  border: 0.1rem solid white;
-}
-
-.home_page .header .userProfile_cover .user_profile i {
-  color: white;
-  font-size: 1.8rem;
-}
-
-/* ------------------------------------ */
-/* Home Page Header Content : Ends here */
-/* ------------------------------------ */
-
-/* ------------------------------------ */
-/* Home Page Body Content : Starts here */
-/* ------------------------------------ */
-
-.home_page .body {
-  position: relative;
-  display: flex;
   width: 100%;
-  height: 85%;
-  margin-top: auto;
-  /* border: 0.1rem solid yellowgreen; */
-}
-
-.home_page .body .chatList_cover {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 99%;
-  margin-top: auto;
-  overflow-y: scroll;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  /* border: 0.1rem solid red; */
-}
-
-.home_page .body .chatList_cover::-webkit-scrollbar {
-  width: 0.1rem;
-  background-color: transparent;
-}
-
-.home_page .body .chatList_cover::-webkit-scrollbar-thumb {
-  border-radius: 2rem;
-  background-color: white;
-}
-
-.home_page .body .chatList_cover::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-.home_page .body .chat_list_items {
-  position: relative;
-  display: flex;
-  width: 98%;
-  height: 3.5rem;
-  margin: 0.3rem 0;
-  border-radius: 2rem;
-  border: 0.1rem solid white;
-}
-
-.home_page .body .chat_list_items .chatPic_cover {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 18%;
-  height: 100%;
-  padding: 0.1rem;
-  /* border: 0.1rem solid yellow; */
-}
-.home_page .body .chat_list_items .chatPic_cover .chat_pic {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  height: 3rem;
-  border: 0.1rem solid white;
-  border-radius: 50%;
-}
-
-.home_page .body .chat_list_items .chatPic_cover .chat_pic i {
-  color: white;
-  font-size: 2rem;
-}
-
-.home_page .body .chat_list_items .chatInfo_cover {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  height: 100%;
-  /* border: 0.1rem solid yellow; */
-}
-
-.home_page .body .chat_list_items .chatInfo_cover .chat_name {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 90%;
   height: 50%;
-  /* border: 0.1rem solid red; */
+  /* border: 0.1rem solid black; */
 }
 
-.home_page .body .chat_list_items .chatInfo_cover .chat_name p {
-  color: white;
+.home_page .container .body .msg_cover h2 {
+  color: var(--primary_txt1);
+  font-family: "Raleway", sans-serif;
   font-size: 1.3rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
+  white-space: pre-wrap;
+  letter-spacing: 0.2rem;
 }
 
-.home_page .body .chat_list_items .chatInfo_cover .chat_msg_highlight {
+.home_page .container .body .btn_cover {
   position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 85%;
+  gap: 0.5rem;
+  width: 100%;
   height: 50%;
-  /* border: 0.1rem solid red; */
+  /* border: 0.1rem solid black; */
 }
 
-.home_page .body .chat_list_items .chatInfo_cover .chat_msg_highlight p {
-  color: lightslategray;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.home_page .body .chat_list_items .chatInfo_cover .chat_msg_highlight p i {
-  margin-right: 0.2rem;
-  color: lightseagreen;
-}
-
-.home_page .body .chat_list_items .chatBadge_cover {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 12%;
-  height: 100%;
-  /* border: 0.1rem solid yellow; */
-}
-.home_page .body .chat_list_items .chat_badge {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 50%;
-  background-color: lightgreen;
-  /* border: 0.1rem solid white; */
+.home_page .container .body .btn_cover .btn {
+  width: 15rem;
+  height: 2.5rem;
+  text-align: center;
+  padding-top: 0.2rem;
+  font-size: 1.3rem;
+  font-family: var(--btn_font);
+  border-radius: 5rem;
+  cursor: pointer;
+  transition: 0.1s;
 }
 
-.home_page .body .chat_list_items .chat_badge p {
+.home_page .container .body .btn_cover .btn:nth-child(1) {
+  color: #ffffff;
+  border: 0.1rem solid white;
+  background-color: rgba(8, 78, 108, 0.5);
+}
+.home_page .container .body .btn_cover .btn:nth-child(1):hover {
+  color: white;
+  background-color: rgba(8, 78, 108, 0.92);
+  border: 0.1rem solid white;
+}
+
+.home_page .container .body .btn_cover .btn:nth-child(2) {
   color: black;
-  font-size: 1.5rem;
-  font-weight: bolder;
+  background-color: var(--primary_bg2);
+  border: 0.1rem solid black;
+}
+.home_page .container .body .btn_cover .btn:nth-child(2):hover {
+  color: #ffffff;
+  border: 0.1rem solid white;
+  background-color: rgba(8, 78, 108, 0.92);
 }
 
 /* ------------------------------------ */
 /* Home Page Body Content : Ends here */
-/* ------------------------------------ */
-
-/* ------------------------------------ */
-/* Home Page Footer Content : Starts here */
-/* ------------------------------------ */
-
-.home_page .footer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 3.3rem;
-  margin-top: auto;
-  border: 0.1rem solid yellowgreen;
-}
-
-.home_page .footer .menu_bar {
-  position: relative;
-  display: flex;
-  width: 70%;
-  height: 80%;
-  border-radius: 5rem;
-  border: 0.1rem solid white;
-}
-
-.home_page .footer .menu_bar ul {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  border-radius: 5rem;
-  /* border: 0.1rem solid red; */
-}
-
-.home_page .footer .menu_bar ul li {
-  position: relative;
-  display: flex;
-}
-
-.home_page .footer .menu_bar ul li i {
-  color: white;
-  font-size: 1.6rem;
-}
-
-/* ------------------------------------ */
-/* Home Page Footer Content : Ends here */
 /* ------------------------------------ */
