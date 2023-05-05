@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import style from "../../styles/SignIn.module.css";
-import {
-  AiOutlineUser,
-  AiOutlineMail,
-  FaRegEye,
-  FcGoogle,
-  FaRegEyeSlash,
-} from "react-icons/all";
+import Image from "next/image";
 import { useState } from "react";
+
+// import { FcGoogle } from "react-icons/fc";
+// import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+// import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+
+import img from "../../../public/LOGO (2).png";
+import style from "../../styles/SignIn.module.css";
 
 const SignIn = () => {
   const [passwordIcon, set_passwordIcon] = useState(1);
@@ -22,7 +22,15 @@ const SignIn = () => {
 
           {/* Sign In page Header Part Starts */}
           <section className={style.header}>
-            <span className={style.logo_cover}></span>
+            <span className={style.logo_cover}>
+              <Image
+                src={img}
+                alt="Picture of the author"
+                width={200}
+                height={200}
+                className={style.logo}
+              />
+            </span>
             <h1 className={style.heading}>Sign In</h1>
           </section>
           {/* Sign In page Header Part Starts */}
@@ -41,7 +49,7 @@ const SignIn = () => {
                     placeholder="Name"
                     required
                   />
-                  <AiOutlineUser className={style.input_icons} />
+                  {/* <AiOutlineUser className={style.input_icons} /> */}
                 </label>
                 <label className={style.input_cover}>
                   <input
@@ -52,7 +60,7 @@ const SignIn = () => {
                     placeholder="Username"
                     required
                   />
-                  <AiOutlineUser className={style.input_icons} />
+                  {/* <AiOutlineUser className={style.input_icons} /> */}
                 </label>
                 <label className={style.input_cover}>
                   <input
@@ -63,7 +71,7 @@ const SignIn = () => {
                     placeholder="Email address"
                     required
                   />
-                  <AiOutlineMail className={style.input_icons} />
+                  {/* <AiOutlineMail className={style.input_icons} /> */}
                 </label>
                 <label className={style.input_cover}>
                   <input
@@ -74,7 +82,7 @@ const SignIn = () => {
                     placeholder="Password"
                     required
                   />
-                  {passwordIcon ? (
+                  {/* {passwordIcon ? (
                     <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
@@ -88,7 +96,7 @@ const SignIn = () => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
-                  )}
+                  )} */}
                 </label>
                 <label className={style.input_cover}>
                   <input
@@ -100,7 +108,7 @@ const SignIn = () => {
                     required
                   />
 
-                  {passwordIcon ? (
+                  {/* {passwordIcon ? (
                     <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
@@ -114,7 +122,7 @@ const SignIn = () => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
-                  )}
+                  )} */}
                 </label>
                 <label className={style.input_cover}>
                   <button type="submit" className={style.signIn_page_btn}>
@@ -135,7 +143,7 @@ const SignIn = () => {
               {/* Sign In page Google Sign In Part Start */}
               <div className={style.google_signIn_cover}>
                 <button>
-                  <FcGoogle />
+                  {/* <FcGoogle /> */}
                   Continue with Google
                 </button>
               </div>

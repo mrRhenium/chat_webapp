@@ -1,17 +1,21 @@
 "use client";
 
-import style from "../../styles/LogIn.module.css";
-import {
-  AiOutlineUser,
-  FaRegEye,
-  FcGoogle,
-  FaRegEyeSlash,
-} from "react-icons/all";
-import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-const LogIn = () => {
+// import { FcGoogle } from "react-icons/fc";
+// import { AiOutlineUser } from "react-icons/ai";
+// import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+
+import { useState } from "react";
+import img from "../../../public/LOGO (2).png";
+import style from "../../styles/LogIn.module.css";
+
+const LogIn = async () => {
   const [passwordIcon, set_passwordIcon] = useState(1);
+
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
+
   return (
     <>
       <div className={style.logIn_page}>
@@ -20,13 +24,21 @@ const LogIn = () => {
 
           {/* LogIn page Header Part Start */}
           <section className={style.header}>
-            <span className={style.logo_cover}></span>
+            <span className={style.logo_cover}>
+              <Image
+                src={img}
+                alt="Picture of the author"
+                width={200}
+                height={200}
+                className={style.logo}
+              />
+            </span>
             <main>
               <p>
                 {`Welcome Back !! \n to \n World Fastest & Secure \n Messaging Platform`}
               </p>
             </main>
-            <h1 className={style.heading}>Sign In</h1>
+            <h1 className={style.heading}>Log In</h1>
           </section>
           {/* LogIn page Header Part End */}
 
@@ -44,7 +56,7 @@ const LogIn = () => {
                     placeholder="Username"
                     required
                   />
-                  <AiOutlineUser className={style.input_icons} />
+                  {/* <AiOutlineUser className={style.input_icons} /> */}
                 </label>
                 <label className={style.input_cover}>
                   <input
@@ -55,7 +67,7 @@ const LogIn = () => {
                     placeholder="Password"
                     required
                   />
-                  {passwordIcon ? (
+                  {/* {passwordIcon ? (
                     <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
@@ -69,7 +81,7 @@ const LogIn = () => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
-                  )}
+                  )} */}
                 </label>
                 <label className={style.input_cover}>
                   <button type="submit" className={style.signIn_page_btn}>
@@ -90,7 +102,7 @@ const LogIn = () => {
               {/* Sign In page Google Sign In Part Start */}
               <div className={style.google_signIn_cover}>
                 <button>
-                  <FcGoogle />
+                  {/* <FcGoogle /> */}
                   Continue with Google
                 </button>
               </div>
@@ -100,7 +112,7 @@ const LogIn = () => {
             {/* LogIn page Footer Part Start */}
             <div className={style.footer}>
               <span>
-                Don't have an Account? <Link href={`/signIn`}>sign In</Link>
+                Don't have an Account? <Link href={`/signIn`}>SignIn</Link>
               </span>
             </div>
           </section>
