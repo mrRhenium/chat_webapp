@@ -4,15 +4,71 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
-// import { FcGoogle } from "react-icons/fc";
-// import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
-// import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 import img from "../../../public/LOGO (2).png";
 import style from "../../styles/SignIn.module.css";
 
 const SignIn = () => {
   const [passwordIcon, set_passwordIcon] = useState(1);
+  const [MSG, set_MSG] = useState({
+    usernameMSG: "",
+    emailMSG: "",
+    passwordMSG: "",
+  });
+
+  const usernameChangeHandler = () => {
+    if (username.value === "nit" || username.value === "") {
+      set_MSG((pre) => ({
+        ...pre,
+        usernameMSG: "",
+      }));
+    } //
+    else {
+      set_MSG((pre) => ({
+        ...pre,
+        usernameMSG: "this username is arleady exist !",
+      }));
+    }
+  };
+
+  const emailChangeHandler = () => {
+    const pattern = /^[\w.+\-]+@gmail\.com$/;
+    let result = email.value.match(pattern);
+
+    if (result || email.value === "") {
+      set_MSG((pre) => ({
+        ...pre,
+        emailMSG: "",
+      }));
+    } //
+    else {
+      set_MSG((pre) => ({
+        ...pre,
+        emailMSG: "enter valid Gmail Id !",
+      }));
+    }
+  };
+
+  const passwordChangeHandler = () => {
+    if (
+      password.value === confirm_password.value ||
+      confirm_password.value === ""
+    ) {
+      set_MSG((pre) => ({
+        ...pre,
+        passwordMSG: "",
+      }));
+    } //
+    else {
+      set_MSG((pre) => ({
+        ...pre,
+        passwordMSG: "password should be match !",
+      }));
+    }
+  };
 
   return (
     <>
@@ -49,8 +105,9 @@ const SignIn = () => {
                     placeholder="Name"
                     required
                   />
-                  {/* <AiOutlineUser className={style.input_icons} /> */}
+                  <AiOutlineUser className={style.input_icons} />
                 </label>
+
                 <label className={style.input_cover}>
                   <input
                     type="text"
@@ -59,9 +116,14 @@ const SignIn = () => {
                     autoComplete="off"
                     placeholder="Username"
                     required
+                    onChange={() => usernameChangeHandler()}
                   />
-                  {/* <AiOutlineUser className={style.input_icons} /> */}
+                  <AiOutlineUser className={style.input_icons} />
                 </label>
+                {MSG.usernameMSG === "" ? null : (
+                  <strong>{MSG.usernameMSG}</strong>
+                )}
+
                 <label className={style.input_cover}>
                   <input
                     type="email"
@@ -70,9 +132,12 @@ const SignIn = () => {
                     autoComplete="off"
                     placeholder="Email address"
                     required
+                    onChange={() => emailChangeHandler()}
                   />
-                  {/* <AiOutlineMail className={style.input_icons} /> */}
+                  <AiOutlineMail className={style.input_icons} />
                 </label>
+                {MSG.emailMSG === "" ? null : <strong>{MSG.emailMSG}</strong>}
+
                 <label className={style.input_cover}>
                   <input
                     type={passwordIcon ? "password" : "text"}
@@ -81,8 +146,10 @@ const SignIn = () => {
                     autoComplete="off"
                     placeholder="Password"
                     required
+                    onChange={() => passwordChangeHandler()}
                   />
-                  {/* {passwordIcon ? (
+
+                  {passwordIcon ? (
                     <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
@@ -96,8 +163,9 @@ const SignIn = () => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
-                  )} */}
+                  )}
                 </label>
+
                 <label className={style.input_cover}>
                   <input
                     type={passwordIcon ? "password" : "text"}
@@ -106,9 +174,10 @@ const SignIn = () => {
                     autoComplete="off"
                     placeholder="Confirm password"
                     required
+                    onChange={() => passwordChangeHandler()}
                   />
 
-                  {/* {passwordIcon ? (
+                  {passwordIcon ? (
                     <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
@@ -122,8 +191,12 @@ const SignIn = () => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
-                  )} */}
+                  )}
                 </label>
+                {MSG.passwordMSG === "" ? null : (
+                  <strong>{MSG.passwordMSG}</strong>
+                )}
+
                 <label className={style.input_cover}>
                   <button type="submit" className={style.signIn_page_btn}>
                     Sign In
@@ -143,7 +216,7 @@ const SignIn = () => {
               {/* Sign In page Google Sign In Part Start */}
               <div className={style.google_signIn_cover}>
                 <button>
-                  {/* <FcGoogle /> */}
+                  <FcGoogle className={style.google_signIn_icon} />
                   Continue with Google
                 </button>
               </div>

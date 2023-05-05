@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// import { FcGoogle } from "react-icons/fc";
-// import { AiOutlineUser } from "react-icons/ai";
-// import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineUser } from "react-icons/ai";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 import { useState } from "react";
 import img from "../../../public/LOGO (2).png";
@@ -56,7 +56,7 @@ const LogIn = async () => {
                     placeholder="Username"
                     required
                   />
-                  {/* <AiOutlineUser className={style.input_icons} /> */}
+                  <AiOutlineUser className={style.input_icons} />
                 </label>
                 <label className={style.input_cover}>
                   <input
@@ -67,7 +67,7 @@ const LogIn = async () => {
                     placeholder="Password"
                     required
                   />
-                  {/* {passwordIcon ? (
+                  {passwordIcon ? (
                     <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
@@ -81,7 +81,7 @@ const LogIn = async () => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
-                  )} */}
+                  )}
                 </label>
                 <label className={style.input_cover}>
                   <button type="submit" className={style.signIn_page_btn}>
@@ -102,7 +102,7 @@ const LogIn = async () => {
               {/* Sign In page Google Sign In Part Start */}
               <div className={style.google_signIn_cover}>
                 <button>
-                  {/* <FcGoogle /> */}
+                  <FcGoogle className={style.google_signIn_icon} />
                   Continue with Google
                 </button>
               </div>
