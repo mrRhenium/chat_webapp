@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req, res) {
   // Database is Connecting.
   dbConnect();
-  console.log("Database is Connected");
+  // console.log("Database is Connected");
 
   const body = await req.json();
   const user = await User.findOne({ username: body.username });

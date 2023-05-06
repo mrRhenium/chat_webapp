@@ -10,11 +10,57 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import img from "../../../public/LOGO (2).png";
 import style from "../../styles/LogIn.module.css";
+import { useRouter } from "next/navigation";
 
 const LogIn = async () => {
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
+  const router = useRouter();
   const [passwordIcon, set_passwordIcon] = useState(1);
 
-  // await new Promise((resolve) => setTimeout(resolve, 2000));
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    let final_username = username.value.trim();
+    let final_password = password.value.trim();
+
+    try {
+      //
+
+      const Formdata = {
+        username: final_username,
+        password: final_password,
+      };
+
+      // Send the data to the server in JSON format.
+      const JSONdata = JSON.stringify(Formdata);
+
+      const result = await fetch("http://localhost:3000/api/logIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      });
+
+      const data = await result.json();
+      console.log("Successful", data);
+
+      if (data.status === false) {
+        alert(data.msg);
+        //
+      } else if (data.status === true) {
+        document.cookie = `token=${data.token};expire;max-age=86400`;
+        router.push("/chats");
+        //
+      }
+
+      // console.log(result);
+
+      //
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -45,8 +91,8 @@ const LogIn = async () => {
           {/* LogIn page Body Part Start */}
           <section className={style.body}>
             <div className={style.form}>
-              {/* Sign In page Form Part Start */}
-              <form action="">
+              {/* LogIn page Form Part Start */}
+              <form onSubmit={submitForm}>
                 <label className={style.input_cover}>
                   <input
                     type="text"
@@ -68,14 +114,14 @@ const LogIn = async () => {
                     required
                   />
                   {passwordIcon ? (
-                    <FaRegEye
+                    <FaRegEyeSlash
                       className={style.input_icons}
                       onClick={() => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
                   ) : (
-                    <FaRegEyeSlash
+                    <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
                         set_passwordIcon(!passwordIcon);

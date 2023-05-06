@@ -16,16 +16,27 @@ export async function POST(req, res) {
   if (exist_user) {
     //
     if (exist_user.username === body.username) {
-      return NextResponse.json({ msg: "This username already Exist!" });
+      return NextResponse.json({
+        status: false,
+        msg: "This username already Exist!",
+      });
     } else if (exist_user.email === body.email) {
-      return NextResponse.json({ msg: "This Email-Id already Exist!" });
+      return NextResponse.json({
+        status: false,
+        msg: "This Email-Id already Exist!",
+      });
     }
 
     //
   } else {
     //
+
     const user = await User.create(body);
-    return NextResponse.json(user);
+
+    return NextResponse.json({
+      status: true,
+      msg: "Successfully SignIn",
+    });
     //
   }
 }

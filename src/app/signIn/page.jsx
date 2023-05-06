@@ -17,14 +17,59 @@ const SignIn = () => {
   const router = useRouter();
   const [passwordIcon, set_passwordIcon] = useState(1);
   const [MSG, set_MSG] = useState({
+    fullnameMSG: "",
     usernameMSG: "",
     emailMSG: "",
     passwordMSG: "",
+    confirm_passwordMSG: "",
   });
+
+  const fullnameChangeHandler = () => {
+    let final_fullname = fullname.value.trim();
+
+    if (
+      (final_fullname.length > 3 && final_fullname.length < 20) ||
+      final_fullname.length === 0
+    ) {
+      set_MSG((pre) => ({
+        ...pre,
+        fullnameMSG: "",
+      }));
+    } //
+    else {
+      set_MSG((pre) => ({
+        ...pre,
+        fullnameMSG: "name should be contain 4-20 characters!",
+      }));
+    }
+  };
 
   let checkUsernameExistance;
   const usernameChangeHandler = async () => {
+    //
+    let final_username = username.value.trim();
     clearTimeout(checkUsernameExistance);
+
+    // let containSpace = final_username.search(" ");
+    // console.log(containSpace);
+
+    // if (containSpace != -1) {
+    //   //
+    //   set_MSG((pre) => ({
+    //     ...pre,
+    //     usernameMSG: "username should not contain any space!",
+    //   }));
+
+    //   return;
+    //   //
+    // } else {
+    //   //
+    //   set_MSG((pre) => ({
+    //     ...pre,
+    //     usernameMSG: "",
+    //   }));
+    //   //
+    // }
 
     //
     checkUsernameExistance = setTimeout(async () => {
@@ -33,7 +78,7 @@ const SignIn = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: username.value.trim() }),
+        body: JSON.stringify({ username: final_username }),
       });
 
       const data = await result.json();
@@ -48,7 +93,7 @@ const SignIn = () => {
       else {
         set_MSG((pre) => ({
           ...pre,
-          usernameMSG: "this user is arleady exist !",
+          usernameMSG: "this username is arleady exist!",
         }));
       }
     }, 2000);
@@ -73,10 +118,9 @@ const SignIn = () => {
   };
 
   const passwordChangeHandler = () => {
-    if (
-      password.value === confirm_password.value ||
-      confirm_password.value === ""
-    ) {
+    let final_password = password.value.trim();
+
+    if (final_password.length >= 6 || final_password.length === 0) {
       set_MSG((pre) => ({
         ...pre,
         passwordMSG: "",
@@ -85,7 +129,28 @@ const SignIn = () => {
     else {
       set_MSG((pre) => ({
         ...pre,
-        passwordMSG: "password should be match !",
+        passwordMSG: "password should be contain >= 6 characters!",
+      }));
+    }
+  };
+
+  const confirm_passwordChangeHandler = () => {
+    let final_password = password.value.trim();
+    let final_confirm_password = confirm_password.value.trim();
+
+    if (
+      final_confirm_password === final_password ||
+      confirm_password.value === ""
+    ) {
+      set_MSG((pre) => ({
+        ...pre,
+        confirm_passwordMSG: "",
+      }));
+    } //
+    else {
+      set_MSG((pre) => ({
+        ...pre,
+        confirm_passwordMSG: "password should be match !",
       }));
     }
   };
@@ -97,22 +162,24 @@ const SignIn = () => {
     let final_username = username.value.trim();
     let final_email = email.value.trim();
     let final_password = password.value.trim();
-    let final_confirm_password = confirm_password.value.trim();
 
-    // const pattern = /^[\w.+\-]+@gmail\.com$/;
-    // let result = final_email.match(pattern);
-
-    if (final_fullname === "") {
+    if (MSG.fullnameMSG != "") {
       alert("Enter valid name!");
       return;
-    } else if (final_username === "" || MSG.usernameMSG != "") {
+    } //
+    else if (MSG.usernameMSG != "") {
       alert("Enter valid username!");
       return;
-    } else if (final_password != final_confirm_password) {
-      alert("Passwords are not matching!");
+    } //
+    else if (MSG.emailMSG != "") {
+      alert("Enter valid G-mail ID!");
       return;
-    } else if (!final_email.match(/^[\w.+\-]+@gmail\.com$/)) {
-      alert("Enter Valid Gmail ID!");
+    } //
+    else if (MSG.passwordMSG != "") {
+      alert("Enter valid password!");
+    } //
+    else if (MSG.confirm_passwordMSG != "") {
+      alert("Passwords are not matching!");
       return;
     }
 
@@ -140,10 +207,10 @@ const SignIn = () => {
       const data = await result.json();
       console.log("Successful", data);
 
-      if (data.msg) {
+      if (data.status === false) {
         alert(data.msg);
         //
-      } else if (!data.msg && result.status === 200) {
+      } else if (data.status === true) {
         router.push("/logIn");
         //
       }
@@ -190,9 +257,19 @@ const SignIn = () => {
                     autoComplete="off"
                     placeholder="Name"
                     required
+                    onChange={() => fullnameChangeHandler()}
                   />
-                  <AiOutlineUser className={style.input_icons} />
+                  {MSG.fullnameMSG === "" ? (
+                    <AiOutlineUser className={style.input_icons} />
+                  ) : (
+                    <RiErrorWarningLine
+                      className={`${style["input_icons"]} ${style["input_error_icons"]}`}
+                    />
+                  )}
                 </label>
+                {MSG.fullnameMSG === "" ? null : (
+                  <strong>{MSG.fullnameMSG}</strong>
+                )}
 
                 <label className={style.input_cover}>
                   <input
@@ -244,35 +321,10 @@ const SignIn = () => {
                     autoComplete="off"
                     placeholder="Password"
                     required
-                    onChange={() => passwordChangeHandler()}
-                  />
-
-                  {passwordIcon ? (
-                    <FaRegEyeSlash
-                      className={style.input_icons}
-                      onClick={() => {
-                        set_passwordIcon(!passwordIcon);
-                      }}
-                    />
-                  ) : (
-                    <FaRegEye
-                      className={style.input_icons}
-                      onClick={() => {
-                        set_passwordIcon(!passwordIcon);
-                      }}
-                    />
-                  )}
-                </label>
-
-                <label className={style.input_cover}>
-                  <input
-                    type={passwordIcon ? "password" : "text"}
-                    name="confirm_password"
-                    id="confirm_password"
-                    autoComplete="off"
-                    placeholder="Confirm password"
-                    required
-                    onChange={() => passwordChangeHandler()}
+                    onChange={() => {
+                      passwordChangeHandler();
+                      confirm_passwordChangeHandler();
+                    }}
                   />
 
                   {passwordIcon ? (
@@ -293,6 +345,37 @@ const SignIn = () => {
                 </label>
                 {MSG.passwordMSG === "" ? null : (
                   <strong>{MSG.passwordMSG}</strong>
+                )}
+
+                <label className={style.input_cover}>
+                  <input
+                    type={passwordIcon ? "password" : "text"}
+                    name="confirm_password"
+                    id="confirm_password"
+                    autoComplete="off"
+                    placeholder="Confirm password"
+                    required
+                    onChange={() => confirm_passwordChangeHandler()}
+                  />
+
+                  {passwordIcon ? (
+                    <FaRegEyeSlash
+                      className={style.input_icons}
+                      onClick={() => {
+                        set_passwordIcon(!passwordIcon);
+                      }}
+                    />
+                  ) : (
+                    <FaRegEye
+                      className={style.input_icons}
+                      onClick={() => {
+                        set_passwordIcon(!passwordIcon);
+                      }}
+                    />
+                  )}
+                </label>
+                {MSG.confirm_passwordMSG === "" ? null : (
+                  <strong>{MSG.confirm_passwordMSG}</strong>
                 )}
 
                 <label className={style.input_cover}>
