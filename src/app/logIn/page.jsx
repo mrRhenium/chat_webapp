@@ -7,13 +7,12 @@ import { FcGoogle } from "react-icons/fc";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
-import { useState } from "react";
 import img from "../../../public/LOGO (2).png";
 import style from "../../styles/LogIn.module.css";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const LogIn = async () => {
-  // await new Promise((resolve) => setTimeout(resolve, 2000));
+const LogIn = () => {
   const router = useRouter();
   const [passwordIcon, set_passwordIcon] = useState(1);
 

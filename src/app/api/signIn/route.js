@@ -1,6 +1,8 @@
 import dbConnect from "@/Database/dbCoonect";
 import User from "@/Models/users_model";
+
 import { NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 
 export async function POST(req, res) {
   // console.log("Database Connecting");
@@ -31,7 +33,10 @@ export async function POST(req, res) {
   } else {
     //
 
-    const user = await User.create(body);
+    const newUser = body;
+    const hash_password = await bcrypt.hash(body.password, 10);
+
+    const user = await User.create({ ...newUser, password: hash_password });
 
     return NextResponse.json({
       status: true,
