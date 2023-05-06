@@ -125,6 +125,10 @@
 .signIn_page .container .body .form label .input_icons {
   font-size: 1.4rem;
 }
+.signIn_page .container .body .form label .input_error_icons {
+  color: #ff0000;
+}
+
 .signIn_page .container .body .form .signIn_page_btn {
   cursor: pointer;
   color: var(--primary_txt1);

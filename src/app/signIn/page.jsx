@@ -1,17 +1,20 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
+import img from "../../../public/LOGO (2).png";
+import style from "../../styles/SignIn.module.css";
 
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { RiErrorWarningLine } from "react-icons/ri";
 
-import img from "../../../public/LOGO (2).png";
-import style from "../../styles/SignIn.module.css";
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
+  const router = useRouter();
   const [passwordIcon, set_passwordIcon] = useState(1);
   const [MSG, set_MSG] = useState({
     usernameMSG: "",
@@ -19,19 +22,36 @@ const SignIn = () => {
     passwordMSG: "",
   });
 
-  const usernameChangeHandler = () => {
-    if (username.value === "nit" || username.value === "") {
-      set_MSG((pre) => ({
-        ...pre,
-        usernameMSG: "",
-      }));
-    } //
-    else {
-      set_MSG((pre) => ({
-        ...pre,
-        usernameMSG: "this username is arleady exist !",
-      }));
-    }
+  let checkUsernameExistance;
+  const usernameChangeHandler = async () => {
+    clearTimeout(checkUsernameExistance);
+
+    //
+    checkUsernameExistance = setTimeout(async () => {
+      const result = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: username.value.trim() }),
+      });
+
+      const data = await result.json();
+      console.log(data);
+
+      if (data.msg === "This user is not exist!") {
+        set_MSG((pre) => ({
+          ...pre,
+          usernameMSG: "",
+        }));
+      } //
+      else {
+        set_MSG((pre) => ({
+          ...pre,
+          usernameMSG: "this user is arleady exist !",
+        }));
+      }
+    }, 2000);
   };
 
   const emailChangeHandler = () => {
@@ -70,6 +90,72 @@ const SignIn = () => {
     }
   };
 
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    let final_fullname = fullname.value.trim();
+    let final_username = username.value.trim();
+    let final_email = email.value.trim();
+    let final_password = password.value.trim();
+    let final_confirm_password = confirm_password.value.trim();
+
+    // const pattern = /^[\w.+\-]+@gmail\.com$/;
+    // let result = final_email.match(pattern);
+
+    if (final_fullname === "") {
+      alert("Enter valid name!");
+      return;
+    } else if (final_username === "" || MSG.usernameMSG != "") {
+      alert("Enter valid username!");
+      return;
+    } else if (final_password != final_confirm_password) {
+      alert("Passwords are not matching!");
+      return;
+    } else if (!final_email.match(/^[\w.+\-]+@gmail\.com$/)) {
+      alert("Enter Valid Gmail ID!");
+      return;
+    }
+
+    try {
+      //
+
+      const Formdata = {
+        name: final_fullname,
+        username: final_username,
+        email: final_email,
+        password: final_password,
+      };
+
+      // Send the data to the server in JSON format.
+      const JSONdata = JSON.stringify(Formdata);
+
+      const result = await fetch("http://localhost:3000/api/signIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      });
+
+      const data = await result.json();
+      console.log("Successful", data);
+
+      if (data.msg) {
+        alert(data.msg);
+        //
+      } else if (!data.msg && result.status === 200) {
+        router.push("/logIn");
+        //
+      }
+
+      // console.log(result);
+
+      //
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <div className={style.signIn_page}>
@@ -95,12 +181,12 @@ const SignIn = () => {
           <section className={style.body}>
             <div className={style.form}>
               {/* Sign In page Form Part Start */}
-              <form action="">
+              <form onSubmit={submitForm}>
                 <label className={style.input_cover}>
                   <input
                     type="text"
-                    name="name"
-                    id="name"
+                    name="fullname"
+                    id="fullname"
                     autoComplete="off"
                     placeholder="Name"
                     required
@@ -118,7 +204,13 @@ const SignIn = () => {
                     required
                     onChange={() => usernameChangeHandler()}
                   />
-                  <AiOutlineUser className={style.input_icons} />
+                  {MSG.usernameMSG === "" ? (
+                    <AiOutlineUser className={style.input_icons} />
+                  ) : (
+                    <RiErrorWarningLine
+                      className={`${style["input_icons"]} ${style["input_error_icons"]}`}
+                    />
+                  )}
                 </label>
                 {MSG.usernameMSG === "" ? null : (
                   <strong>{MSG.usernameMSG}</strong>
@@ -134,7 +226,13 @@ const SignIn = () => {
                     required
                     onChange={() => emailChangeHandler()}
                   />
-                  <AiOutlineMail className={style.input_icons} />
+                  {MSG.emailMSG === "" ? (
+                    <AiOutlineMail className={style.input_icons} />
+                  ) : (
+                    <RiErrorWarningLine
+                      className={`${style["input_icons"]} ${style["input_error_icons"]}`}
+                    />
+                  )}
                 </label>
                 {MSG.emailMSG === "" ? null : <strong>{MSG.emailMSG}</strong>}
 
@@ -150,14 +248,14 @@ const SignIn = () => {
                   />
 
                   {passwordIcon ? (
-                    <FaRegEye
+                    <FaRegEyeSlash
                       className={style.input_icons}
                       onClick={() => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
                   ) : (
-                    <FaRegEyeSlash
+                    <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
                         set_passwordIcon(!passwordIcon);
@@ -178,14 +276,14 @@ const SignIn = () => {
                   />
 
                   {passwordIcon ? (
-                    <FaRegEye
+                    <FaRegEyeSlash
                       className={style.input_icons}
                       onClick={() => {
                         set_passwordIcon(!passwordIcon);
                       }}
                     />
                   ) : (
-                    <FaRegEyeSlash
+                    <FaRegEye
                       className={style.input_icons}
                       onClick={() => {
                         set_passwordIcon(!passwordIcon);

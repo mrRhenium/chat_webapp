@@ -2,24 +2,17 @@ import dbConnect from "@/Database/dbCoonect";
 import User from "@/Models/users_model";
 import { NextResponse } from "next/server";
 
-export async function GET(req, res) {
-  const data = await User.find({});
-  return NextResponse.json(data);
-}
-
 export async function POST(req, res) {
-  // console.log("Database Connecting");
+  // Database is Connecting.
   dbConnect();
-  // console.log("Database Connected");
+  console.log("Database is Connected");
 
   const body = await req.json();
+  const user = await User.findOne({ username: body.username });
 
-  const u = await User.findOne({ name: body.name });
-  if (u) {
-    return NextResponse.json("Already Exits");
+  if (user) {
+    return NextResponse.json({ msg: "This user is exist!" });
   }
 
-  const user = await User.create(body);
-
-  return NextResponse.json(user);
+  return NextResponse.json({ msg: "This user is not exist!" });
 }
