@@ -1,0 +1,67 @@
+/* ------------------------------------ */
+/* Setting Page Header Content : Start here */
+/* ------------------------------------ */
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  max-height: 4rem;
+  padding: 0 0.5rem;
+  background-color: var(--primary_bg1);
+  /* border: 0.1rem solid black; */
+}
+
+.header h1 {
+  color: var(--primary_txt1);
+  font-size: 1.8rem;
+  font-family: var(--header_font);
+  word-spacing: -0.4rem;
+}
+
+/* ------------------------------------ */
+/* Setting Page Header Content : End here */
+/* ------------------------------------ */
+
+/* ------------------------------------ */
+/* Setting Page Body Content : Start here */
+/* ------------------------------------ */
+
+.body {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 3.3rem - 4rem);
+  /* border: 0.1rem solid red; */
+}
+
+.body .settingItem_cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  /* border: 0.1rem solid red; */
+}
+.body .settingItem_cover::-webkit-scrollbar {
+  width: 0.1rem;
+  background-color: transparent;
+}
+
+.body .settingItem_cover::-webkit-scrollbar-thumb {
+  border-radius: 2rem;
+  background-color: white;
+}
+
+.body .settingItem_cover::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* ------------------------------------ */
+/* Setting Page Body Content : End here */
+/* ------------------------------------ */

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const invitationSchema = new Schema(
+const notificationSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -20,6 +20,10 @@ const friendSchema = new Schema(
     chatId: {
       type: Schema.Types.ObjectId,
       ref: "Chat",
+    },
+    inviteBy: {
+      type: Boolean,
+      required: true,
     },
     blockStatus: {
       type: Boolean,
@@ -58,8 +62,8 @@ const userDataSchema = new Schema(
       type: [friendSchema],
       required: true,
     },
-    invitations: {
-      type: [invitationSchema],
+    notifications: {
+      type: [notificationSchema],
       required: true,
     },
   },

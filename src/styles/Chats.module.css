@@ -1,37 +1,102 @@
 /* ------------------------------------ */
-/* ChatList Component Content : Starts here */
+/* Chats Page Header Content : Start here */
 /* ------------------------------------ */
 
-.chatList_cover {
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  max-height: 4rem;
+  padding: 0 0.5rem;
+  background-color: var(--primary_bg1);
+  /* border: 0.1rem solid black; */
+}
+
+.header .logo_cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 7.5rem;
+  height: 3rem;
+  /* border: 0.1rem solid black; */
+}
+.header .logo_cover .logo {
+  width: 100%;
+  height: 100%;
+}
+
+.header .userProfile_cover {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+}
+.header .userProfile_cover .user_profile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 0.1rem solid white;
+}
+
+.header .userProfile_cover .user_profile .icons {
+  color: white;
+  font-weight: lighter;
+  font-size: 1.8rem;
+}
+
+/* ------------------------------------ */
+/* Chats Page Header Content : Ends here */
+/* ------------------------------------ */
+
+/* ------------------------------------ */
+/* Chats Page Body Content : Starts here */
+/* ------------------------------------ */
+
+.body {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 3.3rem - 4rem);
+  /* border: 0.1rem solid red; */
+}
+
+.body .chatList_cover {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
-  padding-bottom: 1rem;
-  margin-top: auto;
   overflow-y: scroll;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   /* border: 0.1rem solid red; */
 }
 
-.chatList_cover::-webkit-scrollbar {
+.body .chatList_cover::-webkit-scrollbar {
   width: 0.1rem;
   background-color: transparent;
 }
 
-.chatList_cover::-webkit-scrollbar-thumb {
+.body .chatList_cover::-webkit-scrollbar-thumb {
   border-radius: 2rem;
   background-color: white;
 }
 
-.chatList_cover::-webkit-scrollbar-track {
+.body .chatList_cover::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-.chat_list_items {
+.body .chatList_cover .chat_list_items {
   position: relative;
   display: flex;
   width: 98%;
@@ -42,7 +107,7 @@
   background-color: rgba(34, 175, 236, 0.4);
 }
 
-.chat_list_items .chatPic_cover {
+.body .chatList_cover .chat_list_items .chatPic_cover {
   position: relative;
   display: flex;
   align-items: center;
@@ -51,7 +116,7 @@
   padding: 0rem 0.2rem;
   /* border: 0.1rem solid yellow; */
 }
-.chat_list_items .chatPic_cover .chat_pic {
+.body .chatList_cover .chat_list_items .chatPic_cover .chat_pic {
   position: relative;
   display: flex;
   justify-content: center;
@@ -62,12 +127,12 @@
   /* border: 0.1rem solid white; */
 }
 
-.chat_list_items .chatPic_cover .chat_pic .icons {
+.body .chatList_cover .chat_list_items .chatPic_cover .chat_pic .icons {
   color: whitesmoke;
   font-size: 2.5rem;
 }
 
-.chat_list_items .chatInfo_cover {
+.body .chatList_cover .chat_list_items .chatInfo_cover {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -76,7 +141,7 @@
   /* border: 0.1rem solid yellow; */
 }
 
-.chat_list_items .chatInfo_cover .chat_name {
+.body .chatList_cover .chat_list_items .chatInfo_cover .chat_name {
   position: relative;
   display: flex;
   align-items: center;
@@ -86,7 +151,7 @@
   /* border: 0.1rem solid red; */
 }
 
-.chat_list_items .chatInfo_cover .chat_name p {
+.body .chatList_cover .chat_list_items .chatInfo_cover .chat_name p {
   font-size: 1.3rem;
   color: --var(--primary_txt2);
   font-family: var(--text_font);
@@ -95,7 +160,7 @@
   text-overflow: ellipsis;
 }
 
-.chat_list_items .chatInfo_cover .chat_msg_highlight {
+.body .chatList_cover .chat_list_items .chatInfo_cover .chat_msg_highlight {
   position: relative;
   display: flex;
   gap: 0.2rem;
@@ -105,21 +170,27 @@
   /* border: 0.1rem solid red; */
 }
 
-.chat_list_items .chatInfo_cover .chat_msg_highlight p {
+.body .chatList_cover .chat_list_items .chatInfo_cover .chat_msg_highlight p {
   color: dimgray;
   font-size: 0.8rem;
+  font-family: var(--chat_font);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   /* border: 0.1rem solid black; */
 }
-.chat_list_items .chatInfo_cover .chat_msg_highlight .icons {
+.body
+  .chatList_cover
+  .chat_list_items
+  .chatInfo_cover
+  .chat_msg_highlight
+  .icons {
   font-size: 1.8rem;
   color: darkblue;
   color: whitesmoke;
 }
 
-.chat_list_items .chatBadge_cover {
+.body .chatList_cover .chat_list_items .chatBadge_cover {
   position: relative;
   display: flex;
   justify-content: center;
@@ -128,7 +199,7 @@
   height: 100%;
   /* border: 0.1rem solid yellow; */
 }
-.chat_list_items .chat_badge {
+.body .chatList_cover .chat_list_items .chat_badge {
   position: relative;
   display: flex;
   justify-content: center;
@@ -140,10 +211,13 @@
   border: 0.05rem solid black;
 }
 
-.chat_list_items .chat_badge p {
+.body .chatList_cover .chat_list_items .chat_badge p {
   color: var(--primary_txt2);
   font-size: 1.1rem;
 }
+/* ------------------------------------ */
+/* Chats Page Body Content : Ends here */
+/* ------------------------------------ */
 
 /* ------------------------------------ */
 /* ChatList Component Content : End here */

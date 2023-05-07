@@ -1,59 +1,85 @@
-import style from "../../styles/ChatsLayout.module.css";
-import img from "../../../public/LOGO (2).png";
+"use client";
 
-import { BiUser } from "react-icons/bi";
+import style from "../../styles/ChatsLayout.module.css";
+
 import { FaHome } from "react-icons/fa";
-import { BiSearchAlt2 } from "react-icons/bi";
+import { FaSearch } from "react-icons/fa";
 import { MdNotifications } from "react-icons/md";
 import { AiFillSetting } from "react-icons/ai";
+import { BsDot } from "react-icons/bs";
+import { VscBellDot } from "react-icons/vsc";
 
-import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const Layout = ({ children }) => {
+  const [menuIndex, set_menuIndex] = useState(0);
+
   return (
     <>
       <div className={style.chats_page}>
         <div className={style.container}>
           {/*  */}
 
-          {/* Chats page Header Part Starts */}
-          <section className={style.header}>
-            <div className={style.logo_cover}>
-              <Image
-                src={img}
-                alt="app logo"
-                width={200}
-                height={200}
-                className={style.logo}
-              />
-            </div>
-            <div className={style.userProfile_cover}>
-              <span className={style.user_profile}>
-                <BiUser className={style.icons} />
-              </span>
-            </div>
-          </section>
-          {/* Chats page Header Part Ends */}
-
-          {/* Chats page Body Part Starts */}
-          <section className={style.body}>{children}</section>
-          {/* Chats page Body Part Ends */}
+          {children}
 
           {/* Chats page Footer Part Starts */}
           <section className={style.footer}>
             <nav className={style.menu_bar}>
               <ul>
                 <li>
-                  <FaHome className={`${style["icons"]} ${style["active"]}`} />
+                  <Link href={`/chats`} onClick={() => set_menuIndex(0)}>
+                    <BsDot className={style.iconBadge} />
+
+                    <FaHome
+                      className={
+                        menuIndex === 0
+                          ? `${style["icons"]} ${style["active"]}`
+                          : `${style["icons"]}`
+                      }
+                    />
+                  </Link>
                 </li>
                 <li>
-                  <BiSearchAlt2 className={`${style["icons"]} `} />
+                  <Link href={`/chats/search`} onClick={() => set_menuIndex(1)}>
+                    <FaSearch
+                      className={
+                        menuIndex === 1
+                          ? `${style["icons"]} ${style["active"]}`
+                          : `${style["icons"]}`
+                      }
+                    />
+                  </Link>
                 </li>
                 <li>
-                  <MdNotifications className={`${style["icons"]} `} />
+                  <Link
+                    href={`/chats/notification`}
+                    onClick={() => set_menuIndex(2)}
+                  >
+                    <BsDot className={style.iconBadge} />
+
+                    <VscBellDot
+                      className={
+                        menuIndex === 2
+                          ? `${style["icons"]} ${style["active"]}`
+                          : `${style["icons"]}`
+                      }
+                    />
+                  </Link>
                 </li>
                 <li>
-                  <AiFillSetting className={`${style["icons"]} `} />
+                  <Link
+                    href={`/chats/setting`}
+                    onClick={() => set_menuIndex(3)}
+                  >
+                    <AiFillSetting
+                      className={
+                        menuIndex === 3
+                          ? `${style["icons"]} ${style["active"]}`
+                          : `${style["icons"]}`
+                      }
+                    />
+                  </Link>
                 </li>
               </ul>
             </nav>
