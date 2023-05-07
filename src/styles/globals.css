@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab&family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2&family=Bruno+Ace&family=Raleway&family=Roboto+Slab&family=Montserrat:wght@700&display=swap");
 
 * {
   margin: 0;
@@ -11,6 +11,9 @@
   --primary_bg2: #eeeeee;
   --primary_txt1: #ffffff;
   --primary_txt2: #000000;
+  --badge_color: whitesmoke;
+  --text_font: "Exo 2", sans-serif;
+  --logo_font: "Bruno Ace", cursive;
   --btn_font: "Roboto Slab", serif;
   --header_font: "Montserrat", sans-serif;
 }

@@ -1,0 +1,148 @@
+/* ------------------------------------ */
+/* Chats Page Header Content : Starts here */
+/* ------------------------------------ */
+
+.chats_page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  /* border: 0.1rem solid red; */
+  /* background-color: black; */
+}
+
+.chats_page .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary_bg2);
+  /* border: 0.1rem solid white; */
+}
+
+.chats_page .header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  padding: 0 0.5rem;
+  background-color: var(--primary_bg1);
+  /* border: 0.1rem solid yellowgreen; */
+}
+
+.chats_page .container .logo_cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 7.5rem;
+  height: 3rem;
+  /* border: 0.1rem solid black; */
+}
+.chats_page .container .logo_cover .logo {
+  width: 100%;
+  height: 100%;
+}
+
+.chats_page .header .userProfile_cover {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+}
+.chats_page .header .userProfile_cover .user_profile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 0.1rem solid white;
+}
+
+.chats_page .header .userProfile_cover .user_profile .icons {
+  color: white;
+  font-weight: lighter;
+  font-size: 1.8rem;
+}
+
+/* ------------------------------------ */
+/* Chats Page Header Content : Ends here */
+/* ------------------------------------ */
+
+/* ------------------------------------ */
+/* Chats Page Body Content : Starts here */
+/* ------------------------------------ */
+
+.chats_page .body {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 85%;
+  margin-top: auto;
+  /* border: 0.1rem solid yellowgreen; */
+}
+
+/* ------------------------------------ */
+/* Chats Page Body Content : Ends here */
+/* ------------------------------------ */
+
+/* ------------------------------------ */
+/* Chats Page Footer Content : Starts here */
+/* ------------------------------------ */
+
+.chats_page .footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3.3rem;
+  margin-top: auto;
+  /* border: 0.1rem solid yellowgreen; */
+}
+
+.chats_page .footer .menu_bar {
+  position: relative;
+  display: flex;
+  width: 70%;
+  height: 80%;
+  border-radius: 5rem;
+  background-color: rgba(34, 175, 236, 0.6);
+  border: 0.05rem solid var(--primary_txt2);
+}
+
+.chats_page .footer .menu_bar ul {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  border-radius: 5rem;
+  /* border: 0.1rem solid red; */
+}
+
+.chats_page .footer .menu_bar ul li {
+  position: relative;
+  display: flex;
+  padding: 0.3rem;
+}
+
+.chats_page .footer .menu_bar ul li .icons {
+  color: whitesmoke;
+  font-size: 1.6rem;
+  transition: 0.2s;
+}
+.chats_page .footer .menu_bar ul li .icons.active {
+  color: black;
+  font-size: 1.8rem;
+}
+
+/* ------------------------------------ */
+/* Chats Page Footer Content : Ends here */
+/* ------------------------------------ */
