@@ -17,7 +17,7 @@
 
 .header h1 {
   color: var(--primary_txt1);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-family: var(--header_font);
   word-spacing: -0.4rem;
 }
@@ -34,7 +34,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  height: calc(100vh - 3.3rem - 3.6rem);
+  height: calc(93vh - 3.3rem - 3.6rem);
   /* border: 0.1rem solid red; */
 }
 
