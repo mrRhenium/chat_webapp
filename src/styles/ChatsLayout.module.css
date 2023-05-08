@@ -41,8 +41,8 @@
   position: relative;
   display: flex;
   width: fit-content;
-  height: 80%;
-  padding: 0 0.5rem;
+  height: 75%;
+  padding: 0 1rem;
   border-radius: 5rem;
   background-color: rgba(34, 175, 236, 0.6);
   border: 0.05rem solid var(--primary_txt2);
@@ -51,7 +51,7 @@
 .chats_page .footer .menu_bar ul {
   position: relative;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
   width: 100%;
   border-radius: 5rem;
@@ -71,13 +71,13 @@
 }
 
 .chats_page .footer .menu_bar ul li .iconBadge {
+  display: none;
   position: absolute;
   bottom: 0;
 }
 
 .chats_page .footer .menu_bar ul li .icons.active {
   color: black;
-  display: none;
   font-size: 1.8rem;
 }
 

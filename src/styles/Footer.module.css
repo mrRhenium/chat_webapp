@@ -13,6 +13,7 @@
   height: 7vh;
   background-color: var(--primary_bg2);
   /* border: 0.1rem solid black; */
+  border-top: 0.05rem solid rgba(0, 0, 0, 0.5);
 }
 
 .footer_cover strong {
