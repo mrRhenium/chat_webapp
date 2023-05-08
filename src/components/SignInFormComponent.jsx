@@ -70,13 +70,16 @@ const SignInFormComponent = () => {
 
     //
     checkUsernameExistance = setTimeout(async () => {
-      const result = await fetch("http://localhost:3000/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: final_username }),
-      });
+      const result = await fetch(
+        "https://chat-web-app-ruby.vercel.app/api/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: final_username }),
+        }
+      );
 
       const data = await result.json();
       console.log(data);
@@ -193,13 +196,16 @@ const SignInFormComponent = () => {
       // Send the data to the server in JSON format.
       const JSONdata = JSON.stringify(Formdata);
 
-      const result = await fetch("http://localhost:3000/api/signIn", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSONdata,
-      });
+      const result = await fetch(
+        "https://chat-web-app-ruby.vercel.app/api/signIn",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSONdata,
+        }
+      );
 
       const data = await result.json();
       console.log("Successful", data);

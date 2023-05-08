@@ -26,7 +26,7 @@
   align-items: center;
   width: 100%;
   height: 40%;
-  /* border: 0.1rem solid white; */
+  border: 0.1rem solid black;
 }
 .home_page .container .logo_cover {
   position: relative;
