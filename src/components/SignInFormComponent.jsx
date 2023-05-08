@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 
 const SignInFormComponent = () => {
   const router = useRouter();
+  // console.log("hello", window.location.host);
+
   const [passwordIcon, set_passwordIcon] = useState(1);
   const [MSG, set_MSG] = useState({
     fullnameMSG: "",
@@ -44,42 +46,18 @@ const SignInFormComponent = () => {
   let checkUsernameExistance;
   const usernameChangeHandler = async () => {
     //
-    let final_username = username.value.trim();
     clearTimeout(checkUsernameExistance);
-
-    // let containSpace = final_username.search(" ");
-    // console.log(containSpace);
-
-    // if (containSpace != -1) {
-    //   //
-    //   set_MSG((pre) => ({
-    //     ...pre,
-    //     usernameMSG: "username should not contain any space!",
-    //   }));
-
-    //   return;
-    //   //
-    // } else {
-    //   //
-    //   set_MSG((pre) => ({
-    //     ...pre,
-    //     usernameMSG: "",
-    //   }));
-    //   //
-    // }
+    let final_username = username.value.trim();
 
     //
     checkUsernameExistance = setTimeout(async () => {
-      const result = await fetch(
-        "https://chat-web-app-ruby.vercel.app/api/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username: final_username }),
-        }
-      );
+      const result = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: final_username }),
+      });
 
       const data = await result.json();
       console.log(data);
@@ -87,7 +65,9 @@ const SignInFormComponent = () => {
       if (data.msg === "This user is not exist!") {
         set_MSG((pre) => ({
           ...pre,
-          usernameMSG: "",
+          usernameMSG: final_username.includes(" ")
+            ? "username do not contain any space"
+            : "",
         }));
       } //
       else {
@@ -196,16 +176,13 @@ const SignInFormComponent = () => {
       // Send the data to the server in JSON format.
       const JSONdata = JSON.stringify(Formdata);
 
-      const result = await fetch(
-        "https://chat-web-app-ruby.vercel.app/api/signIn",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSONdata,
-        }
-      );
+      const result = await fetch("/api/signIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      });
 
       const data = await result.json();
       console.log("Successful", data);

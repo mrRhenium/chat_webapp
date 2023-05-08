@@ -29,16 +29,13 @@ const LogInFormComponent = () => {
       // Send the data to the server in JSON format.
       const JSONdata = JSON.stringify(Formdata);
 
-      const result = await fetch(
-        "https://chat-web-app-ruby.vercel.app/api/logIn",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSONdata,
-        }
-      );
+      const result = await fetch("/api/logIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      });
 
       const data = await result.json();
       console.log("Successful", data);
