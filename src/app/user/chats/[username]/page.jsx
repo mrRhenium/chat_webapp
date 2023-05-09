@@ -1,7 +1,6 @@
 "use client";
 
-import style from "../../../styles/ChattingPage.module.css";
-
+import style from "../../../../styles/ChattingPage.module.css";
 import { BsArrowLeft } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { CiMenuKebab } from "react-icons/ci";

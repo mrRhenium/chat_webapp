@@ -1,13 +1,18 @@
-import style from "../../styles/Chats.module.css";
-import img from "../../../public/LOGO (2).png";
+"use client";
+
+import style from "../../../styles/Chats.module.css";
+import img from "../../../../public/LOGO (2).png";
 
 import { BiUser } from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
 import { RiCheckDoubleLine } from "react-icons/ri";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Chats = () => {
+  const router = useRouter();
+
   return (
     <>
       {/* Chats page Header Part Starts */}
@@ -16,8 +21,8 @@ const Chats = () => {
           <Image
             src={img}
             alt="app logo"
-            width={200}
-            height={200}
+            width={50}
+            height={50}
             className={style.logo}
           />
         </div>
@@ -32,7 +37,12 @@ const Chats = () => {
       {/* Chats page Body Part Starts */}
       <section className={style.body}>
         <div className={style.chatList_cover}>
-          <div className={style.chat_list_items}>
+          <div
+            className={style.chat_list_items}
+            onClick={() => {
+              router.push("/user/chats/nit");
+            }}
+          >
             <span className={style.chatPic_cover}>
               <span className={style.chat_pic}>
                 <FaUserCircle className={style.icons} />

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export default async function middleware(req, res) {
-  if (req.url.includes("/chats")) {
+  if (req.url.includes("/user")) {
     const token = req.cookies.get("token")?.value;
 
     if (token != null) {
