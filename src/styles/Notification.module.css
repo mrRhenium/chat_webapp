@@ -18,7 +18,10 @@
 .header h1 {
   color: var(--primary_txt1);
   font-size: 1.6rem;
-  font-family: var(--header_font);
+  font-family: var(--chatting_font);
+  font-weight: bolder;
+  word-spacing: 0.5rem;
+  letter-spacing: 0.1rem;
   word-spacing: -0.4rem;
 }
 

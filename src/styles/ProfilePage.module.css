@@ -258,10 +258,7 @@
   background-color: transparent;
 }
 
-.lower_section .about_cover,
-.lower_section .mainInfo_cover,
-.lower_section .logOutBtn_cover,
-.lower_section .QrCode_cover {
+.lower_section > span {
   position: relative;
   display: flex;
   flex-direction: column;
