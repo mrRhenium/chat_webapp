@@ -1,15 +1,18 @@
 "use client";
 
 import style from "../../../../styles/ChattingPage.module.css";
+
 import { BsArrowLeft } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { CiMenuKebab } from "react-icons/ci";
 import { MdSend } from "react-icons/md";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const ChattingPage = () => {
   const chatsCover = useRef();
+  const router = useRouter();
 
   useEffect(() => {
     chatsCover.current.scrollTop = chatsCover.current.scrollHeight;
@@ -22,10 +25,20 @@ const ChattingPage = () => {
           {/* Header Part Start */}
           <section className={style.header}>
             <div className={style.left_cover}>
-              <span className={style.back_btn}>
+              <span
+                className={style.back_btn}
+                onClick={() => {
+                  router.back();
+                }}
+              >
                 <BsArrowLeft className={style.icons} />
               </span>
-              <span className={style.pic_info}>
+              <span
+                className={style.pic_info}
+                onClick={() => {
+                  router.push("/profile/nit");
+                }}
+              >
                 <BiUser className={style.icons} />
               </span>
               <span className={style.name_info}>
@@ -46,7 +59,8 @@ const ChattingPage = () => {
             <div className={style.chats_cover} ref={chatsCover}>
               <span className={style.msg_left}>
                 <p>
-                  I will be go there soon. You there is a tiger who looks at me.
+                  I will be go thgggggggggggggggggggere soon. You there is a
+                  tiger who looks at me.
                 </p>
                 <p className={style.msg_time}>2:25 PM</p>
               </span>

@@ -194,11 +194,13 @@
 }
 
 .chattingPage .body .chats_cover p {
-  font-size: 1.17rem;
+  font-size: 1rem;
   color: var(--primary_txt2);
   font-family: var(--chatting_font);
-  word-break: break-all;
+  white-space: break-spaces;
+  word-wrap: break-word;
   line-height: 1.3rem;
+  /* word-break: break-all; */
 }
 
 .chattingPage .body .chats_cover .msg_time {
